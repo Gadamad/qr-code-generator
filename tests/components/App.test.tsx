@@ -33,16 +33,6 @@ vi.mock('file-saver', () => ({
   saveAs: vi.fn(),
 }))
 
-// Mock recharts to avoid SVG rendering issues in jsdom
-vi.mock('recharts', () => ({
-  ResponsiveContainer: ({ children }: { children: React.ReactNode }) => children,
-  BarChart: () => null,
-  Bar: () => null,
-  XAxis: () => null,
-  YAxis: () => null,
-  Tooltip: () => null,
-}))
-
 describe('App Component', () => {
   beforeEach(() => {
     vi.clearAllMocks()

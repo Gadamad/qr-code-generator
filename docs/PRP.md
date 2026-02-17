@@ -178,7 +178,6 @@ Build a free, self-hosted QR code generator web app that runs entirely client-si
 - [jsPDF](https://rawgit.com/MrRio/jsPDF/master/docs/) — PDF generation
 - [PapaParse](https://www.papaparse.com/docs) — CSV parsing
 - [file-saver](https://github.com/nicross/file-saver) — Client-side file download
-- [Recharts](https://recharts.org/) — Charts for optional analytics module
 - [Tailwind CSS v4](https://tailwindcss.com/docs) — Utility-first CSS framework
 - [Vite](https://vite.dev/guide/) — Build tool and dev server
 - [React 19](https://react.dev/) — UI library

@@ -18,8 +18,7 @@
     "papaparse": "^5.5.3",
     "qr-code-styling": "^1.9.2",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "recharts": "^3.7.0"
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

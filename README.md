@@ -1,73 +1,79 @@
-# React + TypeScript + Vite
+# QR Code Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A free, self-hosted QR code generator that runs entirely in your browser. No scan limits, no paywalls, no account required.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **10 QR code types** — URL, Text, WiFi, Contact (vCard), Email, SMS, WhatsApp, Crypto Payment, Calendar Event, Geo Location
+- **Live preview** — QR code updates as you type
+- **Full customization** — Foreground/background colors, gradients, dot styles, corner styles, logo embedding, size, margin, error correction
+- **Multiple export formats** — PNG, SVG, PDF, JPEG, clipboard copy, Web Share (mobile)
+- **Bulk generation** — Upload CSV or paste text to generate hundreds of QR codes at once, downloaded as a ZIP
+- **Dark mode** — System preference detection + manual toggle
+- **Fully responsive** — Works on mobile, tablet, and desktop
+- **Privacy-first** — All processing happens client-side. No data leaves your browser.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Layer | Technology |
+|-------|-----------|
+| UI | React 19 + TypeScript 5.9 |
+| Build | Vite 7.3 |
+| Styling | Tailwind CSS v4 |
+| QR Engine | qr-code-styling (SVG rendering) |
+| PDF Export | jsPDF |
+| Bulk Export | JSZip + PapaParse |
+| Tests | Vitest (113 tests) |
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+```bash
+# Install dependencies
+npm install
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# Start dev server
+npm run dev
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+# Run tests
+npm test
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Build for production
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Project Structure
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+src/
+├── components/
+│   ├── QRPreview.tsx          # Live QR code preview
+│   ├── QRCustomizer.tsx       # Color, style, logo options
+│   ├── DownloadOptions.tsx    # Export (PNG, SVG, PDF, JPEG, clipboard)
+│   ├── BulkGenerator.tsx      # CSV/text batch generation
+│   ├── TabSelector.tsx        # QR type navigation
+│   ├── Header.tsx             # Logo, tagline, dark mode
+│   └── types/                 # 10 QR type input forms
+├── hooks/
+│   ├── useQRGenerator.ts      # Core QR generation logic
+│   ├── useDebounce.ts         # Input debouncing
+│   └── useDownload.ts         # File export utilities
+├── utils/
+│   ├── payloads.ts            # Payload formatters per QR type
+│   ├── validation.ts          # Input validators
+│   ├── contrast.ts            # WCAG contrast checker
+│   └── bulk.ts                # Bulk generation orchestrator
+└── App.tsx                    # Main app shell
+```
+
+## Deployment
+
+Static hosting — no server required. Build with `npm run build` and deploy the `dist/` folder to any host:
+
+- **Vercel** — Import the GitHub repo at [vercel.com/new](https://vercel.com/new)
+- **Netlify** — `netlify deploy --prod`
+- **Hostinger** — Git deploy via hPanel
+- **Any CDN** — Upload `dist/` contents
+
+## License
+
+MIT
