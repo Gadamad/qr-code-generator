@@ -1,5 +1,7 @@
 # QR Code Generator
 
+**[Live Demo](https://qr-code-generator-rho-peach.vercel.app/)**
+
 A free, self-hosted QR code generator that runs entirely in your browser. No scan limits, no paywalls, no account required.
 
 ## Features
