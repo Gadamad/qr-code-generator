@@ -1,0 +1,10 @@
+export { default as URLForm } from './URLForm';
+export { default as TextForm } from './TextForm';
+export { default as WiFiForm } from './WiFiForm';
+export { default as VCardForm } from './VCardForm';
+export { default as EmailForm } from './EmailForm';
+export { default as SMSForm } from './SMSForm';
+export { default as WhatsAppForm } from './WhatsAppForm';
+export { default as CryptoForm } from './CryptoForm';
+export { default as CalendarForm } from './CalendarForm';
+export { default as GeoForm } from './GeoForm';
