@@ -309,3 +309,6 @@ Forms debounce at 150ms, App.tsx debounced at 300ms, and the hook debounced at 1
 
 ### 5. QR preview flashing during regeneration
 Since the instance is recreated on each change, the QR code briefly disappears and reappears. **Fix:** Added a Hide/Show toggle so users can hide the preview while editing, then show it when ready to scan/download.
+
+### 6. Tailwind v4 dark mode requires explicit class-based variant
+Tailwind CSS v4 defaults to `@media (prefers-color-scheme: dark)` for `dark:` utilities. Toggling `.dark` on `<html>` does nothing unless you override the variant. **Fix:** Add `@custom-variant dark (&:where(.dark, .dark *));` to `index.css` after the Tailwind import.

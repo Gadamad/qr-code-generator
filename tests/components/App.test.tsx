@@ -86,6 +86,18 @@ describe('App Component', () => {
     expect(classAfterClick).not.toBe(classAfterSecondClick)
   })
 
+  it('should add dark class to html element when dark mode is enabled', () => {
+    const htmlEl = document.documentElement
+    htmlEl.classList.remove('dark')
+    localStorage.setItem('darkMode', 'false')
+
+    render(<App />)
+    const toggle = screen.getByRole('button', { name: /dark|theme|mode/i })
+
+    fireEvent.click(toggle)
+    expect(htmlEl.classList.contains('dark')).toBe(true)
+  })
+
   it('should persist dark mode preference in localStorage', () => {
     render(<App />)
     const toggle = screen.getByRole('button', { name: /dark|theme|mode/i })
@@ -93,6 +105,12 @@ describe('App Component', () => {
     fireEvent.click(toggle)
     const stored = localStorage.getItem('darkMode')
     expect(stored).toBeDefined()
+  })
+
+  it('should restore dark mode from localStorage on mount', () => {
+    localStorage.setItem('darkMode', 'true')
+    render(<App />)
+    expect(document.documentElement.classList.contains('dark')).toBe(true)
   })
 
   it('should show footer with privacy message', () => {
