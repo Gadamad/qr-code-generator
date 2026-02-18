@@ -390,3 +390,4 @@ Static hosting — no server required for Phases 1-3:
 3. **React refs don't notify parents** — `qrInstance.current` must be mirrored to `useState` to trigger `onInstanceReady` callback for download buttons.
 4. **Never stack debounces** — Forms debounce at 150ms. Do NOT add extra debounce in App.tsx or the hook. Triple debounce = 600ms+ delay, appears broken.
 5. **QR preview flashes on regeneration** — Instance recreation causes brief blank. Hide/Show toggle lets users hide preview while editing.
+6. **Tailwind v4 dark mode is media-based by default** — `dark:` classes use `@media (prefers-color-scheme: dark)` not the `.dark` class. Must add `@custom-variant dark (&:where(.dark, .dark *));` to `index.css` for class-based toggling.
